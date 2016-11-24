@@ -1,8 +1,8 @@
 (function () {
   'use strict';
-var mod =  angular.module('myFirstApp',[]);
+var mod =  angular.module('LunchCheck',[]);
 mod.controller.$injector=['$scope'];
-mod.controller('myFirstController',function ($scope) {
+mod.controller('LunchCheckController',function ($scope) {
   $scope.name="";
 
   $scope.splitter = function () {
