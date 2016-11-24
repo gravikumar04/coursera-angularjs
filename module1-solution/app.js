@@ -4,7 +4,6 @@ var mod =  angular.module('LunchCheck',[]);
 mod.controller.$injector=['$scope'];
 mod.controller('LunchCheckController',function ($scope) {
   $scope.name="";
-
   $scope.splitter = function () {
     var arrayOfStrings;
     if($scope.inputList){
@@ -15,7 +14,6 @@ mod.controller('LunchCheckController',function ($scope) {
          return value !="";
     	});
     }
-
     if(arrayOfStrings!=null && arrayOfStrings.length > 0 ){
         if(arrayOfStrings.length<=3){
             $scope.name="Enjoy!";
