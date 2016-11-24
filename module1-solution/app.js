@@ -14,7 +14,7 @@ mod.controller('LunchCheckController',function ($scope) {
          console.log(value!="");
          return value !="";
     });
-    if(arrayOfStrings.length >0 ){
+    if(arrayOfStrings.length >= 0 ){
         if(arrayOfStrings.length<=3){
             $scope.name="Enjoy!";
             console.log('Enjoy!');
