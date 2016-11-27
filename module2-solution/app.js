@@ -48,6 +48,10 @@ function ShoppingListCheckOffService() {
     {
       name :"Pepsi",
       quantity:"3"
+    },
+    {
+      name :"Cookies",
+      quantity:"3"
     }
   ];
 

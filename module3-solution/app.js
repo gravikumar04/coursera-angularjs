@@ -12,24 +12,41 @@ NarrowItDownController.$inject=['MenuSearchService'];
   function NarrowItDownController(MenuSearchService){
     var menu = this;
     // array to hold found items
-    menu.found ;
+    menu.found=[] ;
+    menu.searchText='';
+    menu.flag=false;
 
     menu.getMatchItems = function(searchTerm){
+      menu.searchText=searchTerm;
       //console.log(searchTerm);
       var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
       promise.then(function (response) {
           menu.found=response;
+          menu.flag=true;
           //console.log(response);
       }).catch(function (error) {
           console.log(error);
       })
     }
 
-    menu.removeItem = function(index){
-       console.log("'this' is: ", this);
-      menu.found.splice(index, 1);
+    menu.reset= function(){
+      menu.flag=false;
     }
 
+    menu.removeItem = function(index){
+       //console.log("'this' is: ", this);
+      menu.found.splice(index, 1);
+      if(menu.found.length===0){
+        menu.reset();
+      }
+    }
+
+    menu.nothingFound = function(){
+      if(menu.searchText !== '' && menu.found.length === 0 && menu.flag){
+        return true;
+      }
+      return false;
+    }
 }
 
 
@@ -67,8 +84,10 @@ function ItemsFilter(){
 function FoundItemsDirective(){
   var ddo ={
     templateUrl: 'foundItems.html',
+    restrict: 'E',
     scope: {
       items: '<',
+      nothingFound:'&',
       onRemove: '&'
     },
     controller: FoundItemsController,

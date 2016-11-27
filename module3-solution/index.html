@@ -13,16 +13,16 @@
     <h1>Narrow Down Your Chinese Menu Choice</h1>
 
     <div class="form-group">
-      <input type="text" placeholder="search term" class="form-control" ng-model="searchText">
+      <input type="text" placeholder="search term" class="form-control" ng-model="nidCtrl.searchText" ng-keypress="nidCtrl.reset()">
     </div>
     <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="nidCtrl.getMatchItems(searchText)">Narrow It Down For Me!</button>
+      <button class="btn btn-primary" ng-click="nidCtrl.getMatchItems(nidCtrl.searchText)">Narrow It Down For Me!</button>
     </div>
     <!-- for testing-->
     <!--<div>{{nidCtrl.found}}</div>-->
 
     <!-- found-items should be implemented as a component -->
-    <found-items items="nidCtrl.found" on-remove="nidCtrl.removeItem(index)"></found-items>
+    <found-items items="nidCtrl.found" on-remove="nidCtrl.removeItem(index)" nothing-found="nidCtrl.nothingFound()"></found-items>
   </div>
 
 </body>
